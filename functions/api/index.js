@@ -9,21 +9,16 @@ export default {
     }
 
     const args = new URL(request.url).searchParams;
+    const content = args.get("content") || "This is a sample webhook response.";
 
     try {
-      const response = await fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
+      return await fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content: args.get("content") || "This is a sample webhook response." }),
+        body: JSON.stringify({ content }),
       });
-
-      if (!response.ok) {
-        return new Response(`Failed to send message: ${response.statusText}`, { status: response.status });
-      }
-
-      return new Response("Message sent successfully.");
     } catch (error) {
       return new Response(`Error: ${error.message}`, { status: 500 });
     }
