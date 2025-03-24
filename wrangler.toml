@@ -1,8 +1,4 @@
 # wrangler.toml (wrangler v3.88.0^)
-
 name = "discord-webhook-message"
 main = "./index.js"
 compatibility_date="2025-03-24"
-
-[observability.logs]
-enabled = true
