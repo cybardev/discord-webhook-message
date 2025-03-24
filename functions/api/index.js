@@ -1,0 +1,15 @@
+export default {
+  async fetch(request) {
+    // Only GET requests work with this proxy.
+    if (request.method !== "GET") return new Response(`Method ${request.method} not allowed.`, {
+      status: 405,
+      headers: { Allow: "GET" },
+    });
+
+    const args = new URL(request.url).searchParams;
+    return fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
+      method: "POST",
+      body: JSON.stringify({ content: args.get("content") || "This is a sample webhook response." }),
+    });
+  },
+};
