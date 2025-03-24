@@ -7,9 +7,10 @@ export default {
     });
 
     const args = new URL(request.url).searchParams;
-    return fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
+    fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
       method: "POST",
       body: JSON.stringify({ content: args.get("content") || "This is a sample webhook response." }),
     });
+    return new Response("Message sent.")
   },
 };
