@@ -9,7 +9,7 @@ export default {
     }
 
     const args = new URL(request.url).searchParams;
-    const content = args.get("content") || "This is a sample webhook response.";
+    const content = args.get("msg") || "This is a sample webhook response.";
 
     try {
       return await fetch(env.WEBHOOK_URL, {
