@@ -1,5 +1,5 @@
 export default {
-  async fetch(request) {
+  async fetch(request, env, _ctx) {
     // Only GET requests work with this proxy.
     if (request.method !== "GET") return new Response(`Method ${request.method} not allowed.`, {
       status: 405,
