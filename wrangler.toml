@@ -1,0 +1,3 @@
+name = "discord-webhook-message"
+main = "./functions/api/index.js"
+compatibility_date="2025-03-24"
