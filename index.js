@@ -12,7 +12,7 @@ export default {
     const content = args.get("content") || "This is a sample webhook response.";
 
     try {
-      return await fetch(`https://discord.com/api/webhooks/${env.WEBHOOK_ID}/${env.WEBHOOK_TOKEN}`, {
+      return await fetch(env.WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
